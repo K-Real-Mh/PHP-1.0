@@ -1,7 +1,7 @@
 <?php
 $h1 = "Заголовок";
-$title = "Привет"
-
+$title = "Привет";
+$year = date('Y');
 ?>
 
 <head>
@@ -12,5 +12,6 @@ $title = "Привет"
 
 <body>
 	<h1><?php echo $h1; ?></h1>
-	<?php echo date('Y'); ?>
+	<?php echo $year; ?>
 </body>
+
