@@ -1,10 +1,5 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
-require_once ENGINE_DIR . "gallery.php";
-require_once ENGINE_DIR . "base.php";
-$id = (int) get('id');
-incrementImageViews($id);
-$photo = getGalleryImageById($id);
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +14,8 @@ $photo = getGalleryImageById($id);
 </head>
 
 <body>
-	<div class="container">
-		<?php include VIEWS_DIR . "photoView.php"; ?>
+	<div class="container"></div>
+		<?php include VIEWS_DIR . "calculate.php"; ?>
 	</div>
 </body>
 

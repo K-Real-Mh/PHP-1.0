@@ -1,10 +1,11 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
-require_once ENGINE_DIR . "gallery.php";
 require_once ENGINE_DIR . "base.php";
-$id = (int) get('id');
-incrementImageViews($id);
-$photo = getGalleryImageById($id);
+require_once ENGINE_DIR . "calculate.php";
+$number1 = (int) post('number1');
+$number2 = (int) post('number2');
+$select = (string) post('select');
+$result = mathOperation($number1, $number2, $select);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ $photo = getGalleryImageById($id);
 
 <body>
 	<div class="container">
-		<?php include VIEWS_DIR . "photoView.php"; ?>
+		<?php include VIEWS_DIR . "resultCalc.php"; ?>
 	</div>
 </body>
 

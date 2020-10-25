@@ -1,10 +1,14 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
-require_once ENGINE_DIR . "gallery.php";
 require_once ENGINE_DIR . "base.php";
+require_once ENGINE_DIR . "db.php";
+require_once ENGINE_DIR . "products.php";
 $id = (int) get('id');
-incrementImageViews($id);
-$photo = getGalleryImageById($id);
+$product = getProductById($id);
+$comment = (string) post('text');
+SendComment($comment, $product);
+// $comments = queryAll("SELECT * FROM comments WHERE id_product={$product['id']}");
+$comments = getComments($product);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +24,7 @@ $photo = getGalleryImageById($id);
 
 <body>
 	<div class="container">
-		<?php include VIEWS_DIR . "photoView.php"; ?>
+	<?php include VIEWS_DIR . "product.php"; ?>
 	</div>
 </body>
 

@@ -1,8 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
-require_once CONFIG_DIR . "config.php";
-require_once ENGINE_DIR . "db.php";
-$gallery = queryAll("SELECT * FROM gallery ORDER BY view DESC");
+require_once ENGINE_DIR . "gallery.php";
+require_once ENGINE_DIR . "files.php";
+$gallery = getGalleryImages();
 ?>
 
 <!DOCTYPE html>
