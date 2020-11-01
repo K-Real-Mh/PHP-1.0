@@ -14,6 +14,9 @@ function uploadFile(string $name, string $destination)
 	if (isset($_FILES[$name])) {
 		$tmpPath = $_FILES[$name]['tmp_name'];
 		$destination = $destination . $_FILES[$name]['name'];
+		
 		move_uploaded_file($tmpPath, $destination);
 	}
 }
+
+
