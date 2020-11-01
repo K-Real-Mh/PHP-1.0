@@ -1,44 +1,38 @@
 <?php
-
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
 // Проверка
 
 function connectionCheck()
 {
-	global $connection;
-	global $host;
-	global $login;
-	global $password;
-	global $db;
-	if (!$connection) {
-		$connection = mysqli_connect($host, $login, $password, $db);
+	$config = include CONFIG_DIR . 'config.php';
+	static $connection = null;
+	if (is_null($connection)) {
+		$connection = mysqli_connect(
+			$config['host'],
+			$config['login'],
+			$config['password'],
+			$config['db']
+		);
 	}
+	return $connection;
 }
 
 /** Выполнение запроса без выборки */
-function execute(string $query)
+function execute(string $sql): int
 {
-	global $connection;
-	connectionCheck();
-	return mysqli_query($connection, $query);
+	$result = mysqli_query(connectionCheck(), $sql);
+	return mysqli_affected_rows(connectionCheck());
 }
 
 /** Когда в ответе строго одна строка  */
-function queryOne(string $query)
+function queryOne(string $sql)
 {
-	global $connection;
-	connectionCheck();
-	$res = mysqli_query($connection, $query);
-	return mysqli_fetch_all($res, MYSQLI_ASSOC)[0];
+	return queryAll($sql)[0];
 }
 
 /** обычный селект */
-function queryAll(string $query)
+function queryAll(string $sql)
 {
-	global $connection;
-	connectionCheck();
-	$res = mysqli_query($connection, $query);
-	return mysqli_fetch_all($res, MYSQLI_ASSOC);
+	$result = mysqli_query(connectionCheck(), $sql);
+	return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
-
-
-
