@@ -15,3 +15,12 @@ function post(string $name)
 	return null;
 }
 
+function redirect(string $url)
+{
+	header("Location: {$url}");
+}
+
+function hashh(string $string)
+{
+	return md5($string . 'd5f8');
+}

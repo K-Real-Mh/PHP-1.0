@@ -1,5 +1,16 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
+require_once ENGINE_DIR . "products.php";
+require_once ENGINE_DIR . "users.php";
+require_once ENGINE_DIR . "base.php";
+$products = getProducts();
+session_start();
+if(!isset($_SESSION['user_id'])) {
+	redirect('/login.php');
+} else {
+	$user = getUserById($_SESSION['user_id']);
+	notAdmin($user);
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +25,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
 </head>
 
 <body>
-	<div class="container"></div>
-		<?php include VIEWS_DIR . "calculate.php"; ?>
+	<div class="container">
+		<?php include VIEWS_DIR . 'admin/products/index.php'; ?>
 	</div>
 </body>
 

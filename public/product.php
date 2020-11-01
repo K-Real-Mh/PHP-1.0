@@ -7,7 +7,6 @@ $id = (int) get('id');
 $product = getProductById($id);
 $comment = (string) post('text');
 SendComment($comment, $product);
-// $comments = queryAll("SELECT * FROM comments WHERE id_product={$product['id']}");
 $comments = getComments($product);
 ?>
 
