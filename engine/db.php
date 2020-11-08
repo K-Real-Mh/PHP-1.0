@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
-// Проверка
+
 
 function connectionCheck()
 {

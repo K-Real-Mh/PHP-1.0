@@ -1,24 +1,14 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
-require_once ENGINE_DIR . "products.php";
-$products = getProducts();
-?>
+require_once $_SERVER['DOCUMENT_ROOT'] . '\..\config\main.php';
+require ENGINE_DIR . "autoload.php";
+session_start();
 
-<!DOCTYPE html>
-<html lang="en">
+if (!$requestUri = preg_replace(['#^/#', '#[?].*#'], "",  $_SERVER['REQUEST_URI'])) {
+	$requestUri = DEFAULT_CONTROLLER;
+}
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="Cache-Control" content="no-cache">
-	<link rel="stylesheet" href="src/layout/styles/style.css">
-	<title>Document</title>
-</head>
-
-<body>
-	<div class="container">
-		<?php include VIEWS_DIR . "products.php"; ?>
-	</div>
-</body>
-
-</html>
+$parts = explode("/", $requestUri);
+$page = $parts[0];
+$action = $parts[1] ?? DEFAULT_ACTION;
+$scriptName = PAGES_DIR . $page . "/" . $action . ".php";
+include $scriptName;
