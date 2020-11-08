@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '\..\config\main.php';
-require_once ENGINE_DIR . "db.php";
+// require_once $_SERVER['DOCUMENT_ROOT'] . '\..\config\main.php';
+// require_once ENGINE_DIR . "db.php";
 
 function getProducts(array $ids = [])
 {

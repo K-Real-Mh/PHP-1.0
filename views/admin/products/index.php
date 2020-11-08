@@ -8,7 +8,7 @@
 		border: 1px solid black;
 	}
 </style>
-<a href="/admin/products/edit.php">Создать</a>
+<a href="/admin/edit">Создать</a>
 <table>
 	<?php foreach ($products as $product) :  ?>
 		<tr>
@@ -16,7 +16,7 @@
 				<?= $product['id'] ?>
 			</td>
 			<td>
-				<a href="/admin/products/edit.php?id=<?= $product['id'] ?>">
+				<a href="/admin/edit?id=<?= $product['id'] ?>">
 					<?= $product['name'] ?>
 				</a>
 			</td>

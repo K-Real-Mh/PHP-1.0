@@ -4,6 +4,6 @@
 	<input type="submit" value="Войти">
 </form>
 
-<form action="registration.php" method="post">
+<form action="login/registration" method="post">
 <input type="submit" value="Регистрация">
 </form>

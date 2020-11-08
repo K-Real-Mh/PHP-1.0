@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '\..\config\main.php';
-require_once ENGINE_DIR . "db.php";
+// require_once $_SERVER['DOCUMENT_ROOT'] . '\..\config\main.php';
+// require_once ENGINE_DIR . "db.php";
 
 function getUserById(int $id)
 {
@@ -12,7 +12,7 @@ function getUserById(int $id)
 function notAdmin(array $user)
 {
 	if ($user['title'] != 'admin') {
-		redirect('/login.php');
+		redirect('/login');
 	}
 }
 
@@ -37,7 +37,7 @@ function userCheck(string $login, string $password)
 	AND password = '{$password}'";
 	if ($user = queryOne($sql)) {
 		$_SESSION['user_id'] = $user['id'];
-		redirect('/personal/');
+		redirect('/personal');
 	} else {
 		echo "Не авторизованы!";
 	}

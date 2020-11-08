@@ -8,6 +8,7 @@
 		border: 1px solid black;
 	}
 </style>
+<form action="personal/add" method="post">
 <table>
 	<?php foreach ($basket as $item) :  ?>
 		<tr>
@@ -31,3 +32,5 @@
 		</tr>
 	<?php endforeach; ?>
 </table>
+<input type="submit" value="Заказать">
+</form>

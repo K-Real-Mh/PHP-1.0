@@ -1,8 +1,8 @@
-<img src="<?= $product['path'] ?>" alt="">
+<img src="../<?= $product['path'] ?>" alt="">
 <h1><?= $product['name'] ?></h1>
 <h2><?= $product['price'] ?></h2>
 <h2><?= $product['description'] ?></h2>
-<form action="/add_to_basket.php" method="post">
+<form action="/basket/add" method="post">
 <input type="hidden" value="<?= $product['id'] ?>" name = "id">
 <input type="number" value="0" name="qty">
 <input type="submit" value="добавить">

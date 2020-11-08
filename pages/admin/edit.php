@@ -1,17 +1,12 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '\..\config\main.php';
-require_once ENGINE_DIR . "products.php";
-require_once ENGINE_DIR . "users.php";
-require_once ENGINE_DIR . "base.php";
 session_start();
 if(!isset($_SESSION['user_id'])) {
-	redirect('/login.php');
+	redirect('/login');
 } else {
 	$user = getUserById($_SESSION['user_id']);
 	notAdmin($user);
 }
 
-//$product['images'] = getProductImages($id);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$product = post('product');
 	if (isset($product['id'])) {
@@ -39,4 +34,6 @@ if ($id = get('id')) {
 	$product = getProductById($id);
 }
 
-include VIEWS_DIR . 'admin/products/edit.php';
+echo render('admin/products/edit', ['product' => $product]);
+
+

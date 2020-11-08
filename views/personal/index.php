@@ -4,11 +4,11 @@
 <?php
 if ($user['title'] == 'admin') :
 ?>
-<a href="../admin/products/">Админка</a>
+<a href="../admin">Админка</a>
 <? endif ?>
-<a href="../">Продукты</a>
-<a href="../basket.php">Корзина</a>
+<a href="/">Продукты</a>
+<a href="/basket">Корзина</a>
 
-<form action="exit.php" method="post">
+<form action="personal/exit" method="post">
 <input type="submit" value="Выход" name="exit">
 </form>

@@ -1,10 +1,10 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
-require_once ENGINE_DIR . "base.php";
-require_once ENGINE_DIR . "db.php";
-require_once ENGINE_DIR . "products.php";
-
 session_start();
+
+if(!isset($_SESSION['user_id'])) {
+	redirect('/login');
+}
+
 $basket = [];
 if (!empty($_SESSION['basket'])) {
 	$productsIds = array_keys($_SESSION['basket']);
@@ -17,4 +17,4 @@ if (!empty($_SESSION['basket'])) {
 		];
 	}
 }
-include VIEWS_DIR . "basket.php";
+echo render('basket', ['basket' => $basket]);

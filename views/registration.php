@@ -1,4 +1,4 @@
-<form action="/add_user.php" method="post">
+<form action="add" method="post">
 Логин
 <input type="text" value="" name="login">
 Пароль
